@@ -4,9 +4,11 @@ resource "aws_security_group_rule" "bastion_internet" {
     from_port = 22
     to_port = 22
     protocol = "tcp"
-    cidr_blocks = [local.my_ip]
-    security_group_id = local.bastion_sg_id
+    cidr_blocks = ["0.0.0.0/0"]
+    #cidr_blocks = [local.my_ip]
+    security_group_id = local.bastion_sg_id  # this is sg_id of bastion.
 }
+
 ##### mongodb accepting connection from bastion ######
 resource "aws_security_group_rule" "mongodb_bastion" {
   type = "ingress"
@@ -16,6 +18,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.mongodb_sg_id
 }
+
 ##### mongodb accepting connection from catalogue ######
 resource "aws_security_group_rule" "mongodb_catalogue" {
   type = "ingress"
@@ -25,6 +28,7 @@ resource "aws_security_group_rule" "mongodb_catalogue" {
   source_security_group_id = local.catalogue_sg_id
   security_group_id = local.mongodb_sg_id
 }
+
 ##### mongodb accepting connection from user ######
 resource "aws_security_group_rule" "mongodb_user" {
   type = "ingress"
