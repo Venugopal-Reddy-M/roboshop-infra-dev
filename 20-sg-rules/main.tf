@@ -9,6 +9,16 @@ resource "aws_security_group_rule" "bastion_internet" {
     security_group_id = local.bastion_sg_id  # this is sg_id of bastion.
 }
 
+# OUTBOUND - Bastion can access anywhere
+resource "aws_security_group_rule" "bastion_internet_outbound" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = local.bastion_sg_id
+}
+
 ##### mongodb accepting connection from bastion ######
 resource "aws_security_group_rule" "mongodb_bastion" {
   type = "ingress"
