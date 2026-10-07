@@ -7,7 +7,7 @@ resource "aws_instance" "mongodb" {
 
   tags = merge(
     {
-        Name ="${var.project}-${var.environment}-mongodb"
+        Name = "${var.project}-${var.environment}-mongodb"
     },
     local.common_tags
   )
@@ -21,7 +21,7 @@ resource "terraform_data" "bootstrap" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    password    = "DevOps123"
+    password    = "DevOps321"
     host        = aws_instance.mongodb.private_ip
   } 
 
@@ -31,10 +31,10 @@ resource "terraform_data" "bootstrap" {
     destination = "/tmp/bootstrap.sh"
   }
 
-  provisioner "remote-exec" {
+ provisioner "remote-exec" {
     inline = [
-     "chmod +x /tmp/bootstrap.sh",
-     "/tmp/bootstrap.sh"
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}"
     ]
   }
 
