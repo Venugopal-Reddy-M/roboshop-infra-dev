@@ -29,6 +29,17 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   security_group_id = local.mongodb_sg_id
 }
 
+
+resource "aws_security_group_rule" "mongodb_outbound" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.mongodb_sg_id
+}
+
 ##### mongodb accepting connection from catalogue ######
 resource "aws_security_group_rule" "mongodb_catalogue" {
   type = "ingress"
