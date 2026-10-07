@@ -10,7 +10,7 @@ resource "aws_security_group_rule" "bastion_internet" {
 }
 
 # OUTBOUND - Bastion can access anywhere
-resource "aws_security_group_rule" "bastion_internet_outbound" {
+resource "aws_security_group_rule" "bastion_internet" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
