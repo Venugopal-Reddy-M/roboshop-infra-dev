@@ -30,7 +30,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
 }
 
 
-resource "aws_security_group_rule" "mongodb_outbound" {
+resource "aws_security_group_rule" "mongodb_bastion_outbound" {
   type              = "egress"
   from_port         = 0
   to_port           = 0
