@@ -24,6 +24,12 @@ resource "terraform_data" "bootstrap" {
     password    = "DevOps@123"
     host        = aws_instance.mongodb.private_ip
   } 
+  
+  ### copy the bootstrap.sh file to the instance or remote-exec
+  provisioner "file" {
+    source      = "bootstrap.sh"
+    destination = "/tmp/bootstrap.sh"
+  }
 
   provisioner "remote-exec" {
     inline = [
@@ -32,9 +38,4 @@ resource "terraform_data" "bootstrap" {
     ]
   }
 
-  ### copy the bootstrap.sh file to the instance or remote-exec
-  provisioner "file" {
-    source      = "bootstrap.sh"
-    destination = "/tmp/bootstrap.sh"
-  }
 }
