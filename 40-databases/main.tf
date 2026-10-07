@@ -21,10 +21,10 @@ resource "terraform_data" "bootstrap" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    password    = "DevOps@123"
+    password    = "DevOps123"
     host        = aws_instance.mongodb.private_ip
   } 
-  
+
   ### copy the bootstrap.sh file to the instance or remote-exec
   provisioner "file" {
     source      = "bootstrap.sh"
