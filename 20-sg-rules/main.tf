@@ -10,14 +10,14 @@ resource "aws_security_group_rule" "bastion_internet" {
 }
 
 # OUTBOUND - Bastion can access anywhere
-resource "aws_security_group_rule" "bastion_internet_outbound" {
-  type              = "egress"
-  from_port         = 0
-  to_port           = 0
-  protocol          = "-1"
-  cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = local.bastion_sg_id
-}
+# resource "aws_security_group_rule" "bastion_internet_outbound" {
+#   type              = "egress"
+#   from_port         = 0
+#   to_port           = 0
+#   protocol          = "-1"
+#   cidr_blocks       = ["0.0.0.0/0"]
+#   security_group_id = local.bastion_sg_id
+# }
 
 ##### mongodb accepting connection from bastion ######
 resource "aws_security_group_rule" "mongodb_bastion" {
@@ -27,6 +27,7 @@ resource "aws_security_group_rule" "mongodb_bastion" {
   protocol = "tcp"
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.mongodb_sg_id
+  
 }
 
 ##### mongodb accepting connection from catalogue ######
