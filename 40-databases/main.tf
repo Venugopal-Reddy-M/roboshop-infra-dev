@@ -76,28 +76,15 @@ resource "terraform_data" "bootstrap" {
     host     = aws_instance.mongodb.private_ip
   }
 
-  # provisioner "file" {
-  #   source      = "bootstrap.sh" # Local file path
-  #   destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
-  # }
+  provisioner "file" {
+    source      = "bootstrap.sh" # Local file path
+    destination = "/tmp/bootstrap.sh"    # Destination path on the remote machine
+  }
 
-  # provisioner "remote-exec" {
-  #   inline = [
-  #       "chmod +x /tmp/bootstrap.sh",
-  #       "sudo sh /tmp/bootstrap.sh mongodb"
-  #   ]
-  # }
-
-
-provisioner "file" {
-  source      = "bootstrap.sh"
-  destination = "/tmp/bootstrap.sh"
-}
-
-provisioner "remote-exec" {
-  inline = [
-    "chmod +x /tmp/bootstrap.sh",
-    "sudo /tmp/bootstrap.sh mongodb"
-  ]
-}  
+  provisioner "remote-exec" {
+    inline = [
+        "chmod +x /tmp/bootstrap.sh",
+        "sudo sh /tmp/bootstrap.sh mongodb"
+    ]
+  }
 }
