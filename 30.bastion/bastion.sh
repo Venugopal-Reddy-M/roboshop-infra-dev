@@ -5,6 +5,6 @@ lvextend -r -L + 30G /dev/mapper/RootVG-homeVol
 xfs-growfs /home
 
 # install terraform
-yum install yum-utils -y
-yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp
-yum -y install terraform        
+yum install -y yum-utils
+yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+yum -y install terraform 
