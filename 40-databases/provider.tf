@@ -9,7 +9,7 @@ terraform {
    backend "s3" {
     bucket = "roboshop-dev-remote-vpc"
     # key store inside the bucket
-    key = "roboshop-dev-sg-databases"
+    key = "roboshop-dev-databases"
     region = "us-east-1"
     encrypt = true
     use_lockfile = true
