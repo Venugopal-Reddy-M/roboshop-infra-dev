@@ -11,7 +11,7 @@ resource "aws_instance" "bastion" {
   #### rooot block device configuration, its adding 50 GB gp3 volume to the instance####
   #### so that we can install terraform and other tools on the bastion host####
 
-  root_block_device {
+    root_block_device {
     volume_size = 50
     volume_type = "gp3"
 
@@ -22,6 +22,8 @@ resource "aws_instance" "bastion" {
     local.common_tags
   )
   }
+
+
   tags = merge(
     {
         Name ="${var.project}-${var.environment}-bastion"
