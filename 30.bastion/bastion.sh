@@ -1,7 +1,7 @@
 
 growpart /dev/nvme0n1 4
 
-lvextend -r -L + 30G /dev/mapper/RootVG-homeVol
+lvextend -r -L + 30G /dev/mapper/RootVG-homeVol 
 
 xfs-growfs /home
 

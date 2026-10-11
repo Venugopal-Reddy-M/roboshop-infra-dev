@@ -5,7 +5,23 @@ resource "aws_instance" "bastion" {
   vpc_security_group_ids = [local.bastion_sg_id]
   iam_instance_profile = aws_iam_instance_profile.bastion.name
 
+  #### this is the user_data script it will terraform directly
+  user_data = file("bastion.sh")
 
+  #### rooot block device configuration, its adding 50 GB gp3 volume to the instance####
+  #### so that we can install terraform and other tools on the bastion host####
+
+  root_block_device {
+    volume_size = 50
+    volume_type = "gp3"
+
+    tags = merge(
+    {
+        Name ="${var.project}-${var.environment}-bastion"
+    },
+    local.common_tags
+  )
+  }
   tags = merge(
     {
         Name ="${var.project}-${var.environment}-bastion"
