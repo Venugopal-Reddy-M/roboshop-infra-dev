@@ -49,7 +49,7 @@
 
 
 
-
+#### mongodb_instance ####
 resource "aws_instance" "mongodb" {
   ami           = local.ami_id
   instance_type = "t3.micro"
@@ -89,7 +89,7 @@ resource "terraform_data" "mongodb_bootstrap" {
   }
 }
 
-#####redis instance #######
+##### redis_instance #######
 resource "aws_instance" "redis" {
   ami           = local.ami_id
   instance_type = "t3.micro"
