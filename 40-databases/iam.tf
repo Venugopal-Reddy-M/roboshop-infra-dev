@@ -30,7 +30,6 @@ resource "aws_iam_policy" "mysql" {
   # here templatefile is used to generate variable, like dev, prod etc. based on the environment.
   policy      = template("mysql_iam_policy.json",
     {
-      project     = var.project
       environment = var.environment
     }
   )
