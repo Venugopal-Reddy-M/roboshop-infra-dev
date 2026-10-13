@@ -12,7 +12,7 @@ terraform {
     key = "roboshop-dev-sg-rules"
     region = "us-east-1"
     encrypt = true
-    use_lockfile = false
+    use_lockfile = true
     
   }
 }
