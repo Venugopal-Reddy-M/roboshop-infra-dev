@@ -68,7 +68,7 @@ resource "aws_security_group_rule" "redis_cart" {
   source_security_group_id = local.cart_sg_id
   security_group_id = local.redis_sg_id      
 }
-
+### mysql accepting connection from bastion ######
 resource "aws_security_group_rule" "mysql_bastion" {
   type = "ingress"
   from_port = 22
