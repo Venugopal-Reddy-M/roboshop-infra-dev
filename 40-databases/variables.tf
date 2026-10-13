@@ -9,11 +9,10 @@ variable "environment" {
 }
 
 variable "zone_id" {
-  type = string
   default = "Z04610753TCIVP8TQUAQ2"
 }
 
 variable "domain_name" {
-  type = string
+type = string
   default = "solohunting.online"
 }
