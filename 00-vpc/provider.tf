@@ -11,7 +11,7 @@ terraform {
     key = "roboshop-dev-vpc"
     region = "us-east-1"
     encrypt = true
-    use_lockfile = false  
+    use_lockfile = true
     
   }
 }
