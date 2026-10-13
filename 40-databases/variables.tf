@@ -8,7 +8,7 @@ variable "environment" {
   default = "dev"
 }
 
-variable "my_zone_id" {
+variable "zone_id" {
   type = string
   default = "Z04610753TCIVP8TQUAQ2"
 }
