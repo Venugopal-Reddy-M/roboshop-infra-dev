@@ -18,6 +18,8 @@ data "aws_ami" "joindevops" {
   }
 }
 
+### below parameters are sg_ids & subnet_ids.
+
 data "aws_ssm_parameter" "database_subnet_ids" {
   name = "/${var.project}/${var.environment}/database_subnet_ids"
 }

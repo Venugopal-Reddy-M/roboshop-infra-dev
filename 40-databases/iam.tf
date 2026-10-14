@@ -34,12 +34,12 @@ resource "aws_iam_policy" "mysql" {
     }
   )
 }
-### policy attachment
+### policy attachment to the role 
 resource "aws_iam_role_policy_attachment" "mysql" {
   role       = aws_iam_role.mysql.name
   policy_arn = aws_iam_policy.mysql.arn
 }
-## instance profile
+### instance profile is attached to role, which will be attached to the mysql instance.
 resource "aws_iam_instance_profile" "mysql" {
   name = "${var.project}-${var.environment}-mysql"
   role = aws_iam_role.mysql.name

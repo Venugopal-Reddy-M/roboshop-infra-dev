@@ -171,12 +171,13 @@ resource "terraform_data" "mysql" {
 }
 
 
+### rabbitmq_instance ####
 resource "aws_instance" "rabbitmq" {
   ami           = local.ami_id
   instance_type = "t3.micro"
   subnet_id = local.database_subnet_id
   vpc_security_group_ids = [local.rabbitmq_sg_id]
-  #iam_instance_profile = aws_iam_instance_profile.rabbitmq.name
+  iam_instance_profile = aws_iam_instance_profile.rabbitmq.name
 
   tags = merge(
     {
