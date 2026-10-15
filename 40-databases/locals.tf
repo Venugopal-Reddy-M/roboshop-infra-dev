@@ -11,7 +11,7 @@ locals {
   mongodb_sg_id = data.aws_ssm_parameter.mongodb_sg_id.value
   redis_sg_id = data.aws_ssm_parameter.redis_sg_id.value
   mysql_sg_id = data.aws_ssm_parameter.mysql_sg_id.value
-  mysql_root_password = data.aws_ssm_parameter.mysql_root_password.value
+  #mysql_root_password = data.aws_ssm_parameter.mysql_root_password.value
   rabbitmq_sg_id = data.aws_ssm_parameter.rabbitmq_sg_id.value
 
   ### 
