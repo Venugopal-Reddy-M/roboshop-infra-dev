@@ -37,9 +37,15 @@ resource "terraform_data" "catalogue" {
     ]
   }
 }
- 
-# resource "aws_ec2_instance_state" "stop_catalogue" {
-#   instance_id = aws_instance.catalogue.id
-#   state       = "stopped" # Options: running, stopped
-# }
- 
+ ## here stop the catalogue instance
+resource "aws_ec2_instance_state" "stop_catalogue" {
+  instance_id = aws_instance.catalogue.id
+  state       = "stopped" # Options: running, stopped
+  depends_on = true
+}
+
+### here create the AMI for above instance ####
+resource "aws_ami_from_instance" "catalogue_ami" {
+  name               = "${project}-${environment}-catalogue-ami"
+  source_instance_id = aws_instance.catalogue.id
+}
