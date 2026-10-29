@@ -13,7 +13,7 @@ resource "aws_instance" "catalogue" {
   )
 }
 
-resource "terraform_data" "catalogue_bootstrap" {
+resource "terraform_data" "bootstrap_catalogue" {
   triggers_replace = [
     aws_instance.catalogue.id
   ]
