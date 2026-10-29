@@ -46,7 +46,7 @@ resource "aws_ec2_instance_state" "stop_catalogue" {
 
 ### here create the AMI for above instance ####
 resource "aws_ami_from_instance" "catalogue_ami" {
-  name               = "${project}-${environment}-catalogue-ami"
+  name               = "${var.project}-${var.environment}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [ true ]
 }
