@@ -41,12 +41,12 @@ resource "terraform_data" "catalogue" {
 resource "aws_ec2_instance_state" "stop_catalogue" {
   instance_id = aws_instance.catalogue.id
   state       = "stopped" # Options: running, stopped
-  depends_on = [ true ]
+  depends_on = [terraform_data.catalogue]
 }
 
 ### here create the AMI for above instance ####
 resource "aws_ami_from_instance" "catalogue_ami" {
   name               = "${var.project}-${var.environment}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
-  depends_on = [ true ]
+  depends_on = [aws_ec2_instance_state.stop_catalogue]
 }
