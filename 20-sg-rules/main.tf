@@ -113,3 +113,13 @@ resource "aws_security_group_rule" "catalogue_bastion" {
   source_security_group_id = local.bastion_sg_id
   security_group_id = local.catalogue_sg_id      
 }
+########## this for testing purpose only, to access catalogue from bastion. remove this rule after testing.########
+###################################################################################################################
+resource "aws_security_group_rule" "catalogue_bastion" {
+  type = "ingress"
+  from_port = 22
+  to_port = 22
+  protocol = "tcp"
+  source_security_group_id = local.bastion_sg_id
+  security_group_id = local.catalogue_sg_id      
+}
