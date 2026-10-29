@@ -37,7 +37,8 @@ resource "terraform_data" "catalogue" {
     ]
   }
 }
- ## here stop the catalogue instance
+ ## here stop the catalogue instance ##
+ ### depends_on is used to execute dependents
 resource "aws_ec2_instance_state" "stop_catalogue" {
   instance_id = aws_instance.catalogue.id
   state       = "stopped" # Options: running, stopped
@@ -49,4 +50,11 @@ resource "aws_ami_from_instance" "catalogue_ami" {
   name               = "${var.project}-${var.environment}-catalogue-ami"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.stop_catalogue]
+
+  tags = merge(
+    {
+      Name = "${var.project}-${var.environment}-catalogue"
+    },
+    local.common_tags
+  )
 }
