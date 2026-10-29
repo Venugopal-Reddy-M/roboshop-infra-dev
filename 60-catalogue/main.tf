@@ -42,4 +42,4 @@ resource "terraform_data" "bootstrap" {
 #   instance_id = aws_instance.catalogue.id
 #   state       = "stopped" # Options: running, stopped
 # }
-
+ 
