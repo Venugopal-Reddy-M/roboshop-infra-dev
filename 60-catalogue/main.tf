@@ -38,7 +38,7 @@ resource "terraform_data" "bootstrap" {
   }
 }
 
-resource "aws_ec2_instance_state" "stop_catalogue" {
-  instance_id = aws_instance.catalogue.id
-  state       = "stopped" # Options: running, stopped
-}
+# resource "aws_ec2_instance_state" "stop_catalogue" {
+#   instance_id = aws_instance.catalogue.id
+#   state       = "stopped" # Options: running, stopped
+# }
