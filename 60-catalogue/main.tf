@@ -2,7 +2,7 @@
 resource "aws_instance" "catalogue" {
   ami           = local.ami_id
   instance_type = "t3.micro"
-  subnet_id = local.priveate_subnet_ids
+  subnet_id = local.private_subnet_ids
   vpc_security_group_ids = [local.catalogue_sg_id]
 
   tags = merge(
@@ -33,7 +33,7 @@ resource "terraform_data" "catalogue_bootstrap" {
   provisioner "remote-exec" {
     inline = [
         "chmod +x /tmp/bootstrap.sh",
-        "sudo sh /tmp/bootstrap.sh mongodb ${var.environment}"
+        "sudo sh /tmp/bootstrap.sh catalogue ${var.environment}"
     ]
   }
 }
