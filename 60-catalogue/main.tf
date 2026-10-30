@@ -58,7 +58,7 @@ resource "aws_ami_from_instance" "catalogue_ami" {
     local.common_tags
   )
 }
-
+### target-group
 resource "aws_lb_target_group" "catalogue" {
   name     = "${var.project}-${var.environment}-catalogue"
   port     = 8080
@@ -84,11 +84,12 @@ resource "aws_launch_template" "catalogue" {
   image_id = aws_ami_from_instance.catalogue_ami.id
 
   ## if saw the traffic down, autoscaling terminate the instances.
+  ## auto_scaling saw the less traffic, below attribute execute and terminate instance
   instance_initiated_shutdown_behavior = "terminate"
 
   instance_type = "t3.micro"
 
-  vpc_security_group_ids = [local.vpc_id]
+  vpc_security_group_ids = [local.catalogue_sg_id]
 
   update_default_version = true
 
