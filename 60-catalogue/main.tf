@@ -211,7 +211,7 @@ resource "aws_lb_listener_rule" "catalogue" {
 }
 
 
-
+### delete catalogue instance
 resource "terraform_data" "catalogue_delete" {
   triggers_replace = [
     aws_instance.catalogue.id
