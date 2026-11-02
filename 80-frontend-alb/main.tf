@@ -23,6 +23,8 @@ resource "aws_lb_listener" "https" {
   load_balancer_arn = aws_lb.frontend_alb.arn
   port              = "443"
   protocol          = "HTTPS"
+
+  # here we select https protocol, so we need to provide ssl_policy and certificate_arn. ssl_policy is the security policy for the alb listener. certificate_arn is the arn of the acm certificate which we created in 70-acm service.
   ssl_policy        = "ELBSecurityPolicy-2016-08"
   certificate_arn = local.frontend_alb_certificate_arn
 
