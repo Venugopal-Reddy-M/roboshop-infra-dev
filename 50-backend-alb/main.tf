@@ -19,7 +19,7 @@ tags = merge(
 }
 
 ## backend alb_listener code ##
-resource "aws_lb_listener" "backend_alb_listener" {
+resource "aws_lb_listener" "http" {
   load_balancer_arn = aws_lb.backend_alb.arn
   port              = "80"
   protocol          = "HTTP"
