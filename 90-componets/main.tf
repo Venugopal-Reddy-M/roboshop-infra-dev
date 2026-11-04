@@ -1,3 +1,9 @@
-module "components" {
-  source = "../../terraform-roboshop-component"
+
+module "component" {
+     for_each = var.components
+     source = "git::https://github.com/Venugopal-Reddy-M/terraform-roboshop-component.git?ref=main"
+     component = each.key
+     rule_priority = each.value.rule_priority
+
+  
 }
