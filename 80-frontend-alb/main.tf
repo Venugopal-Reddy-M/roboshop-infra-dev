@@ -1,6 +1,6 @@
 ## frontend alb code ##
-resource "aws_lb" "frontend_alb" {
-  name               = "${var.project}-${var.environment}-frontend-alb" ##roboshop-dev-frontend-alb
+resource "aws_lb" "frontend" {
+  name               = "${var.project}-${var.environment}-frontend-alb" ##roboshop-dev-frontend
   internal           = false
   load_balancer_type = "application"
   security_groups    = [local.frontend_alb_sg_id]
@@ -20,13 +20,13 @@ tags = merge(
 
 ## frontend alb_listener code ##
 resource "aws_lb_listener" "https" {
-  load_balancer_arn = aws_lb.frontend_alb.arn
+  load_balancer_arn = aws_lb.frontend.arn
   port              = "443"
   protocol          = "HTTPS"
 
   # here we select https protocol, so we need to provide ssl_policy and certificate_arn. ssl_policy is the security policy for the alb listener. certificate_arn is the arn of the acm certificate which we created in 70-acm service.
   ssl_policy        = "ELBSecurityPolicy-2016-08"
-  certificate_arn = local.frontend_alb_certificate_arn
+  certificate_arn = local.acm_certificate_arn
 
   default_action {
     type = "fixed-response"
@@ -40,16 +40,17 @@ resource "aws_lb_listener" "https" {
 }
 
 ## r53 record for frontend alb ##
-resource "aws_route53_record" "frontend_alb_r53" {
+resource "aws_route53_record" "www" {
   zone_id = var.zone_id
   ## * is used to create a wildcard record, so that all the subdomains will be pointed to this alb.
-  name    = "*.frontend-alb-${var.environment}.${var.domain_name}"  # catalogue.frontend-alb-dev.solohunting.online
+  name    = "*.${var.domain_name}"  # https://*.solohunting.online  
   type    = "A"
   
   ### below are load balancer details, which we are using to create the alias record in route53.
   alias {
-    name                   = aws_lb.frontend_alb.dns_name
-    zone_id                = aws_lb.frontend_alb.zone_id
+    name                   = aws_lb.frontend.dns_name
+    zone_id                = aws_lb.frontend.zone_id
     evaluate_target_health = true
   }
+  allow_overwrite = true
 } 
