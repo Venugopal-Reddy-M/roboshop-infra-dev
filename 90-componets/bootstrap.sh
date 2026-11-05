@@ -163,7 +163,11 @@ cd /home/ec2-user
 
 if [ -d "ansible-roboshop-roles-tf/.git" ]; then
     cd ansible-roboshop-roles-tf
+
+    git remote set-url origin https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
+
     git pull origin main
+
 else
     git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
     cd ansible-roboshop-roles-tf
