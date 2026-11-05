@@ -160,7 +160,7 @@ cd /home/ec2-user
 
 if [ -d "ansible-roboshop-roles-tf/.git" ]; then 
    cd ansible-roboshop-roles-tf 
-    git pull
+    git pull origin main
 else git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git 
    cd ansible-roboshop-roles-tf 
     # git pull
