@@ -149,7 +149,6 @@
 # ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
 
 
-#!/bin/bash set -e
 
 #!/bin/bash 
 set -e
