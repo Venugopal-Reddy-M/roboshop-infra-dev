@@ -23,10 +23,15 @@ chown -R ec2-user:ec2-user /var/log/roboshop
 chmod -R 755 /var/log/roboshop
 touch /var/log/roboshop/ansible.log
 
+# cd /home/ec2-user
+# git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
+# git pull
+# cd ansible-roboshop-roles-tf
+
 cd /home/ec2-user
 git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
-git pull
 cd ansible-roboshop-roles-tf
+git pull origin main
 
 ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
 
