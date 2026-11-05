@@ -25,7 +25,8 @@ touch /var/log/roboshop/ansible.log
 
 cd /home/ec2-user
 git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
-cd ansible-roboshop-roles-tf
 git pull
+cd ansible-roboshop-roles-tf
+
 ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
 
