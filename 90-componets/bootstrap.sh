@@ -151,7 +151,6 @@
 
 
 #!/bin/bash 
-set -e
 
 component=$1 environment=$2 app_version=$3
 
