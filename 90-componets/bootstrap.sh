@@ -122,7 +122,7 @@
 # cd /home/ec2-user
 # git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
 # git pull
-cd ansible-roboshop-roles-tf
+# cd ansible-roboshop-roles-tf
 
 # cd /home/ec2-user
 # git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
