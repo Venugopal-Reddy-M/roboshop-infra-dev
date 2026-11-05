@@ -1,17 +1,17 @@
-# #!/bin/bash
+#!/bin/bash
 
-# component=$1
-# environment=$2
-# app_version=$3
+component=$1
+environment=$2
+app_version=$3
 
-# dnf install ansible -y
+dnf install ansible -y
 
-# cd /home/ec2-user
-# git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
-# cd ansible-roboshop-roles-tf
+cd /home/ec2-user
+git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
+cd ansible-roboshop-roles-tf
 
-# git pull
-# ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
+git pull
+ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
 
 #!/bin/bash
 
@@ -149,33 +149,33 @@
 # ansible-playbook -e component=$component -e env=$environment -e app_version=$app_version roboshop.yaml
 
 
-#!/bin/bash
+# #!/bin/bash
 
-set -e
+# set -e
 
-component=$1
-environment=$2
-app_version=$3
+# component=$1
+# environment=$2
+# app_version=$3
 
-dnf install ansible git -y
+# dnf install ansible git -y
 
-cd /home/ec2-user
+# cd /home/ec2-user
 
-if [ -d "ansible-roboshop-roles-tf/.git" ]; then
-    cd ansible-roboshop-roles-tf
+# if [ -d "ansible-roboshop-roles-tf/.git" ]; then
+#     cd ansible-roboshop-roles-tf
 
-    git remote set-url origin https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
+#     git remote set-url origin https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
 
-    git pull origin main
+#     git pull origin main
 
-else
-    git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
-    cd ansible-roboshop-roles-tf
-fi
+# else
+#     git clone https://github.com/Venugopal-Reddy-M/ansible-roboshop-roles-tf.git
+#     cd ansible-roboshop-roles-tf
+# fi
 
-ansible-playbook \
-    -e component=$component \
-    -e env=$environment \
-    -e app_version=$app_version \
-    roboshop.yaml
+# ansible-playbook \
+#     -e component=$component \
+#     -e env=$environment \
+#     -e app_version=$app_version \
+#     roboshop.yaml
 
