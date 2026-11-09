@@ -356,12 +356,12 @@ resource "aws_security_group_rule" "backend_alb_bastion" {
 
 ### frontend accepting connection from bastion port number is 22 ######
 resource "aws_security_group_rule" "frontend_bastion_22" {
-  type = "ingress"
-  from_port = 22
-  to_port = 22
-  protocol = "tcp"
+  type                     = "ingress"
+  from_port                = 22
+  to_port                  = 22
+  protocol                 = "tcp"
   source_security_group_id = local.bastion_sg_id
-  security_group_id = local.frontend_sg_id      
+  security_group_id        = local.frontend_sg_id
 }
 
 ### forntend accepting coonnection from frontend alb port number is 8080 ######
