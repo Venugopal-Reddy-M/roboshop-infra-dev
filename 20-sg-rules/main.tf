@@ -357,8 +357,8 @@ resource "aws_security_group_rule" "backend_alb_bastion" {
 ### forntend accepting coonnection from frontend alb port number is 80 ######
 resource "aws_security_group_rule" "frontend_frontend_alb" {
   type = "ingress"
-  from_port = 80
-  to_port = 80
+  from_port = 8080
+  to_port = 8080
   protocol = "tcp"
   source_security_group_id = local.frontend_alb_sg_id
   security_group_id = local.frontend_sg_id      
@@ -373,6 +373,7 @@ resource "aws_security_group_rule" "frontend_alb_public" {
   security_group_id = local.frontend_alb_sg_id
 
 }
+
 
 ### frontend accepting connection from bastion port number is 22 ######
 resource "aws_security_group_rule" "frontend_bastion" {
@@ -392,6 +393,16 @@ resource "aws_security_group_rule" "frontend_backend_alb" {
   protocol = "tcp"
   source_security_group_id = local.backend_alb_sg_id
   security_group_id = local.frontend_sg_id      
+}
+
+### frontend_alb accepting connection from frontend port number is 80 ######
+resource "aws_security_group_rule" "frontend_alb_frontend" {
+  type = "ingress"
+  from_port = 80
+  to_port = 80
+  protocol = "tcp"
+  source_security_group_id = local.frontend_sg_id
+  security_group_id = local.frontend_alb_sg_id      
 }
 
 
