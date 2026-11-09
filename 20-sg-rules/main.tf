@@ -384,7 +384,7 @@ resource "aws_security_group_rule" "frontend_bastion" {
   security_group_id = local.frontend_sg_id      
 }
 
-### frontend accepting connection from bastion port number is 22 ######
+### frontend accepting connection from bastion port number is 80 ######
 resource "aws_security_group_rule" "frontend_backend_alb" {
   type = "ingress"
   from_port = 80
