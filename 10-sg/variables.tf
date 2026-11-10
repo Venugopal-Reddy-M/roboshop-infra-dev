@@ -17,6 +17,8 @@ variable "sg_names" {
     "catalogue", "user", "cart", "shipping", "payment",
     "backend_alb",
     #frontend
-    "frontend", "frontend_alb", "bastion"
+    "frontend", "frontend_alb", "bastion",
+    #openvpn
+    "openvpn"
   ]
 }
