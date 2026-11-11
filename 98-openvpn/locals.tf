@@ -1,5 +1,5 @@
 locals {
-  ami_id = data.aws_ami.openvpn
+  ami_id = data.aws_ami.openvpn.id
   common_tags = {
     Project = var.project
     Environment = var.environment
