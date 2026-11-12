@@ -374,15 +374,15 @@ resource "aws_security_group_rule" "frontend_frontend_alb" {
   security_group_id = local.frontend_sg_id      
 }
 
-### frontend accepting connection from backend_alb port number is 80 ######
-resource "aws_security_group_rule" "frontend_backend_alb" {
-  type = "ingress"
-  from_port = 80
-  to_port = 80
-  protocol = "tcp"
-  source_security_group_id = local.backend_alb_sg_id
-  security_group_id = local.frontend_sg_id      
-}
+# ### frontend accepting connection from backend_alb port number is 80 ######
+# resource "aws_security_group_rule" "frontend_backend_alb" {
+#   type = "ingress"
+#   from_port = 80
+#   to_port = 80
+#   protocol = "tcp"
+#   source_security_group_id = local.backend_alb_sg_id
+#   security_group_id = local.frontend_sg_id      
+# }
 
 
 #########################
