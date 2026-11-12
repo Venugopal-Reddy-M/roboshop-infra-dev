@@ -367,8 +367,8 @@ resource "aws_security_group_rule" "frontend_bastion_22" {
 ### forntend accepting coonnection from frontend alb port number is 8080 ######
 resource "aws_security_group_rule" "frontend_frontend_alb" {
   type = "ingress"
-  from_port = 8080
-  to_port = 8080
+  from_port = 80
+  to_port = 80
   protocol = "tcp"
   source_security_group_id = local.frontend_alb_sg_id
   security_group_id = local.frontend_sg_id      
